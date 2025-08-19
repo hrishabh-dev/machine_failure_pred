@@ -1,0 +1,162 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Adds space between the white box and the prediction text */
+    width: 100%;
+    max-width: 500px;
+}
+
+.prediction-text {
+    text-align: center;
+    font-size: 1.8em; /* Made text a little bigger */
+    font-weight: 600; /* Made the font bolder */
+    padding: 20px 30px; /* Increased padding */
+    border-radius: 12px; /* Rounded corners more */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Adds a more prominent shadow */
+    width: 100%;
+    
+    /* Set text color for better contrast on colorful backgrounds */
+    color: #fff; /* Changed text color to white for contrast */
+    transition: background-color 0.5s ease;
+}
+
+/* UPDATED: Styles for a vibrant green background, now a blue-green gradient */
+.prediction-text.success {
+    background: linear-gradient(to right, #4CAF50, #2196F3);
+}
+
+/* UPDATED: Styles for a vibrant red background */
+.prediction-text.failure {
+    background-color: #dc3545;
+}
+
+/* Added a subtle text shadow for better readability */
+.prediction-text b {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #74ebd5;
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 999; 
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%; /* Ensure form takes full width of container */
+}
+
+.two-column-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 8px;
+    font-size: 1em;
+    width: 100%;
+}
+
+input[type="number"] {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="number"]:focus {
+    border-color: #6a7ffb;
+    box-shadow: 0 0 8px rgba(106, 127, 251, 0.5);
+    outline: none;
+}
+
+button {
+    padding: 12px;
+    background: #6a7ffb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background: #5563e0;
+    transform: translateY(-2px);
+}
+
+.clear-button {
+    padding: 12px;
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s, transform 0.2s;
+    margin-left: 10px;
+}
+
+.clear-button:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+.hidden {
+  display: none;
+}
+
+@media (max-width: 520px) {
+    .two-column-row {
+        grid-template-columns: 1fr;
+    }
+}

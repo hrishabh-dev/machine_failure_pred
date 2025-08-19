@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Failure Prediction</title>
+    
+    <!-- This is the ONLY stylesheet link that should be in your file. -->
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="main-content-wrapper">
+        <div class="container">
+            <h1>Machine Failure Prediction</h1>
+            <form action="/predict" method="post">
+                <div class="two-column-row">
+                    <div class="form-group">
+                        <label for="Power">Power</label>
+                        <input type="number" step="any" id="Power" name="Power" placeholder="Enter Power" required />
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="OSF">OSF</label>
+                        <input type="number" step="any" id="OSF" name="OSF" placeholder="Enter 0 or 1" min="0" max="1" required />
+                    </div>
+                </div>
+
+                <div class="two-column-row">
+                    <div class="form-group">
+                        <label for="PWF">PWF</label>
+                        <input type="number" step="any" id="PWF" name="PWF" placeholder="Enter 0 or 1" min="0" max="1" required />
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="HDF">HDF</label>
+                        <input type="number" step="any" id="HDF" name="HDF" placeholder="Enter 0 or 1" min="0" max="1" required />
+                    </div>
+                </div>
+
+                <div class="two-column-row">
+                    <div class="form-group">
+                        <label for="TWF">TWF</label>
+                        <input type="number" step="any" id="TWF" name="TWF" placeholder="Enter 0 or 1" min="0" max="1" required />
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="Torque_Nm">Torque (Nm)</label>
+                        <input type="number" step="any" id="Torque_Nm" name="Torque_Nm" placeholder="Enter Torque" required />
+                    </div>
+                </div>
+
+                <div class="two-column-row">
+                    <div class="form-group">
+                        <label for="Rotational_speed_rpm">Rotational Speed (rpm)</label>
+                        <input type="number" step="any" id="Rotational_speed_rpm" name="Rotational_speed_rpm" placeholder="Enter Rotational Speed" required />
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="Temp_difference">Temp Difference</label>
+                        <input type="number" step="any" id="Temp_difference" name="Temp_difference" placeholder="Enter Temp Difference" required />
+                    </div>
+                </div>
+
+                <div style="width: 100%; text-align: center; margin-top: 20px;">
+                    <button type="submit">Predict</button>
+                    <button type="button" class="clear-button" onclick="clearResult()">Clear</button>
+                </div>
+            </form>
+        </div>
+        <!-- This div is now inside the new wrapper -->
+        <div class="prediction-text {% if prediction == 'No Failure' %}success{% else %}failure{% endif %}{% if not prediction %}hidden{% endif %}">
+            {% if prediction %}
+            <b><center>{{ prediction }}</center></b>
+            {% endif %}
+        </div>
+    </div>
+   <script>
+        function clearResult() {
+            const predictionBox = document.querySelector('.prediction-text');
+    
+            // Remove the inner text
+            predictionBox.innerHTML = '';
+    
+            // Remove the success and failure classes
+            predictionBox.classList.remove('success');
+            predictionBox.classList.remove('failure');
+        }
+    </script>
+
+</body>
+</html>
